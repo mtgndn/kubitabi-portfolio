@@ -1,7 +1,8 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Navbar from "@/components/Navbar"
+import Image from "next/image"
 
 interface Product {
   _id?: string
@@ -174,11 +175,16 @@ export default function AdminPage() {
                 key={product._id}
                 className="bg-white rounded-lg shadow-card p-4 flex flex-col justify-between hover:shadow-lg transition-shadow duration-300"
               >
-                <img
-                  src={product.imageUrl}
-                  alt={product.name}
-                  className="w-full h-48 object-cover rounded mb-4"
-                />
+                <div className="relative w-full h-48 mb-4 rounded overflow-hidden">
+                  <Image
+                    src={product.imageUrl}
+                    alt={product.name}
+                    fill
+                    style={{ objectFit: "cover" }}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    priority={true}
+                  />
+                </div>
                 <h3 className="text-lg font-semibold text-[#222222]">{product.name}</h3>
                 <p className="text-gray-600 flex-grow">{product.description}</p>
                 <div className="mt-2 font-bold text-[#b08900]">{product.price.toFixed(2)} ₺</div>

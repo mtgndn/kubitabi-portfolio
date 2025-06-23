@@ -1,3 +1,6 @@
+"use client"
+
+import Image from "next/image"
 import PageTransition from "@/components/PageTransition"
 
 interface Product {
@@ -41,11 +44,16 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
     <PageTransition>
       <main className="container mx-auto p-6 min-h-screen">
         <div className="flex flex-col md:flex-row gap-8">
-          <img
-            src={product.imageUrl}
-            alt={product.name}
-            className="w-full md:w-1/2 h-auto object-cover rounded-lg shadow"
-          />
+          <div className="relative w-full md:w-1/2 h-96 md:h-auto rounded-lg shadow overflow-hidden">
+            <Image
+              src={product.imageUrl}
+              alt={product.name}
+              fill
+              style={{ objectFit: "cover" }}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority={true}
+            />
+          </div>
           <div className="flex-1">
             <h1 className="text-4xl font-bold text-navy-900 mb-4">{product.name}</h1>
             <p className="text-gray-700 mb-6">{product.description}</p>

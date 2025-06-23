@@ -1,5 +1,6 @@
 "use client"
 import { useState } from "react"
+import Image from "next/image"
 
 interface ProductCardProps {
   id: number | string
@@ -19,12 +20,16 @@ export default function ProductCard({ name, description, price, imageUrl, buyUrl
       className={`bg-white rounded-lg shadow-md p-5 cursor-pointer transform transition-all duration-300 
         hover:-translate-y-2 hover:shadow-lg`}
     >
-      <img
-        src={imageUrl}
-        alt={name}
-        className="w-full h-56 object-cover rounded-md mb-4"
-        loading="lazy"
-      />
+      <div className="relative w-full h-56 mb-4 rounded-md overflow-hidden">
+        <Image
+          src={imageUrl}
+          alt={name}
+          fill
+          style={{ objectFit: "cover" }}
+          sizes="(max-width: 768px) 100vw, 100%"
+          priority={false}
+        />
+      </div>
 
       <h3 className="text-xl font-semibold text-black mb-2">{name}</h3>
 
