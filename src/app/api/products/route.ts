@@ -7,7 +7,7 @@ export async function GET(request: Request) {
     const url = new URL(request.url)
     const id = url.pathname.split("/").pop()
     if (!id) {
-      return NextResponse.json({ error: "ID gerekli" }, { status: 400 })
+      return NextResponse.json({ _error: "ID gerekli" }, { status: 400 })
     }
 
     const client = await clientPromise
@@ -15,11 +15,11 @@ export async function GET(request: Request) {
     const product = await db.collection("products").findOne({ _id: new ObjectId(id) })
 
     if (!product) {
-      return NextResponse.json({ error: "Ürün bulunamadı" }, { status: 404 })
+      return NextResponse.json({ _error: "Ürün bulunamadı" }, { status: 404 })
     }
     return NextResponse.json(product)
-  } catch (error) {
-    return NextResponse.json({ error: "Geçersiz ID" }, { status: 400 })
+  } catch (_error) {
+    return NextResponse.json({ _error: "Geçersiz ID" }, { status: 400 })
   }
 }
 
@@ -28,7 +28,7 @@ export async function PUT(request: Request) {
     const url = new URL(request.url)
     const id = url.pathname.split("/").pop()
     if (!id) {
-      return NextResponse.json({ error: "ID gerekli" }, { status: 400 })
+      return NextResponse.json({ _error: "ID gerekli" }, { status: 400 })
     }
 
     const client = await clientPromise
@@ -39,9 +39,9 @@ export async function PUT(request: Request) {
 
     const result = await db.collection("products").updateOne({ _id: new ObjectId(id) }, { $set: body })
     return NextResponse.json(result)
-  } catch (error) {
-    console.error("PUT /api/products/[id] error:", error)
-    return NextResponse.json({ error: "Sunucu hatası" }, { status: 500 })
+  } catch (_error) {
+    console.error("PUT /api/products/[id] error:", _error)
+    return NextResponse.json({ _error: "Sunucu hatası" }, { status: 500 })
   }
 }
 
@@ -50,7 +50,7 @@ export async function DELETE(request: Request) {
     const url = new URL(request.url)
     const id = url.pathname.split("/").pop()
     if (!id) {
-      return NextResponse.json({ error: "ID gerekli" }, { status: 400 })
+      return NextResponse.json({ _error: "ID gerekli" }, { status: 400 })
     }
 
     const client = await clientPromise
@@ -58,8 +58,8 @@ export async function DELETE(request: Request) {
 
     const result = await db.collection("products").deleteOne({ _id: new ObjectId(id) })
     return NextResponse.json(result)
-  } catch (error) {
-    console.error("DELETE /api/products/[id] error:", error)
-    return NextResponse.json({ error: "Sunucu hatası" }, { status: 500 })
+  } catch (_error) {
+    console.error("DELETE /api/products/[id] error:", _error)
+    return NextResponse.json({ _error: "Sunucu hatası" }, { status: 500 })
   }
 }
