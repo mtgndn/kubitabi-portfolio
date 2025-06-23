@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kubitabi Accessories Web Sitesi
 
-## Getting Started
+Şıklık ve kaliteyi bir araya getiren takı ve aksesuar markası Kubitabi için hazırlanmış modern, hızlı ve mobil uyumlu React/Next.js tabanlı web sitesi.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## İçindekiler
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [Proje Hakkında](#proje-hakkında)
+- [Özellikler](#özellikler)
+- [Teknolojiler](#teknolojiler)
+- [Kurulum ve Çalıştırma](#kurulum-ve-çalıştırma)
+- [Proje Yapısı](#proje-yapısı)
+- [Katkıda Bulunma](#katkıda-bulunma)
+- [Lisans](#lisans)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Proje Hakkında
 
-## Learn More
+Bu proje Kubitabi Accessories markasının ürünlerini sergilemek, kullanıcıların ürünleri keşfetmesini sağlamak ve iletişim bilgilerini sunmak için tasarlanmış şık ve kullanıcı dostu bir web sitesidir.  
 
-To learn more about Next.js, take a look at the following resources:
+Mobil öncelikli tasarımı ve hızlı sayfa geçişleri sayesinde modern e-ticaret sitelerine uyumlu bir deneyim sağlar.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Özellikler
 
-## Deploy on Vercel
+- Anasayfa tanıtım bölümü ve öne çıkan ürün galerisinin yatay kaydırmalı gösterimi  
+- Ürünler sayfasında detaylı ürün kartları, görseller ve satın alma linkleri  
+- Responsive (mobil uyumlu) tasarım ve hamburger menü  
+- İletişim sayfasında görsel destekli iletişim bilgileri  
+- Admin paneli (şifre korumalı) ile ürün ekleme, güncelleme ve silme  
+- Next.js 13 + React 18 ve Tailwind CSS kullanımı ile modern teknoloji altyapısı
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Teknolojiler
+
+- [Next.js](https://nextjs.org/) - React tabanlı SSR ve SSG framework  
+- [React](https://reactjs.org/) - UI geliştirme  
+- [Tailwind CSS](https://tailwindcss.com/) - Hızlı ve özelleştirilebilir CSS  
+- [MongoDB](https://www.mongodb.com/) - Ürün veritabanı (Admin panel backend kısmı için)  
+- [Lucide Icons](https://lucide.dev/) - İkonlar  
+- [Vercel](https://vercel.com/) - Hosting ve dağıtım (opsiyonel)
+
+---
+
+## Kurulum ve Çalıştırma
+
+1. Depoyu klonlayın:  
+   ```bash
+   git clone https://github.com/kullaniciadi/kubitabi-accessories.git
+   cd kubitabi-accessories
+2. Bağımlılıkları yükleyin:
+
+bash
+Kopyala
+Düzenle
+npm install
+# veya
+yarn install
+
+3. Geliştirme sunucusunu başlatın:
+   npm run dev
+  # veya
+  yarn dev
+
+4. Tarayıcınızda http://localhost:3000 adresini açın.
+
+Proje Yapısı
+/components   # Navbar, Footer, ProductCard, PageTransition, ScrollingGallery gibi UI bileşenleri
+/pages        # Next.js sayfa dosyaları (Anasayfa, Ürünler, İletişim, Admin)
+/public       # Statik dosyalar (logo, ürün görselleri, ikonlar)
+/styles      # Global ve Tailwind ayarları (varsa)
+/lib         # MongoDB bağlantısı ve yardımcı fonksiyonlar
+/api         # Backend API route'ları (ürün yönetimi)
+
+Lisans
+Bu proje MIT lisansı altında lisanslanmıştır. Daha fazla bilgi için LICENSE dosyasına bakabilirsiniz.
+
+İletişim
+Proje hakkında soru veya önerileriniz için Metehan Günaydın ile iletişime geçebilirsiniz.
