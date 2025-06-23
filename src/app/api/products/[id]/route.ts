@@ -14,6 +14,7 @@ export async function GET(request: Request, { params }: { params: { id: string }
     }
     return NextResponse.json(product)
   } catch (error) {
+    console.error("Hata:", error)
     return NextResponse.json({ error: "Geçersiz ID" }, { status: 400 })
   }
 }
