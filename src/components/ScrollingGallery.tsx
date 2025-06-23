@@ -1,5 +1,8 @@
 "use client"
 
+import Image from "next/image"
+import { useState } from "react"
+
 const images = [
   "/products/necklace1.png",
   "/products/watch1.png",
@@ -10,22 +13,34 @@ const images = [
 ]
 
 export default function ScrollingGallery() {
+  // Her görsel için görünürlük durumunu tutalım
+  const [visibleImages, setVisibleImages] = useState<boolean[]>(new Array(images.length * 2).fill(true))
+
+  function handleError(index: number) {
+    const newVisible = [...visibleImages]
+    newVisible[index] = false
+    setVisibleImages(newVisible)
+  }
+
   return (
     <div className="relative overflow-hidden h-44 flex items-center bg-transparent">
       <div className="flex animate-scroll gap-10 whitespace-nowrap select-none">
-        {images.concat(images).map((src, i) => (
-          <img
-            key={i}
-            src={src}
-            alt="Takı görseli"
-            className="h-36 rounded-lg opacity-80 hover:opacity-100 transition-opacity duration-500"
-            loading="lazy"
-            draggable={false}
-            onError={(e) => {
-              (e.target as HTMLImageElement).style.display = 'none'
-            }}
-          />
-        ))}
+        {images.concat(images).map((src, i) =>
+          visibleImages[i] ? (
+            <div key={i} className="relative h-36 w-[144px] rounded-lg opacity-80 hover:opacity-100 transition-opacity duration-500 overflow-hidden">
+              <Image
+                src={src}
+                alt="Takı görseli"
+                fill
+                sizes="(max-width: 768px) 144px, 144px"
+                style={{ objectFit: "cover" }}
+                loading="lazy"
+                draggable={false}
+                onError={() => handleError(i)}
+              />
+            </div>
+          ) : null
+        )}
       </div>
 
       <style jsx>{`
