@@ -87,17 +87,17 @@ export default function AdminPage() {
         <Navbar />
         <main className="flex justify-center items-center min-h-screen bg-gray-50">
           <form onSubmit={handleLogin} className="bg-black p-8 rounded shadow max-w-sm w-full">
-            <h1 className="text-2xl font-bold mb-6 text-center">Admin Girişi</h1>
+            <h1 className="text-2xl font-bold mb-6 text-center text-white">Admin Girişi</h1>
             <input
               type="password"
               placeholder="Şifre"
               value={inputPass}
               onChange={(e) => setInputPass(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-secondary-light"
+              className="w-full p-3 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-[#b08900] text-black"
             />
             <button
               type="submit"
-              className="w-full bg-secondary hover:bg-secondary-dark text-white py-3 rounded font-semibold transition-colors duration-300"
+              className="w-full bg-[#b08900] hover:bg-[#9c7500] text-white py-3 rounded font-semibold transition-colors duration-300"
             >
               Giriş Yap
             </button>
@@ -111,10 +111,10 @@ export default function AdminPage() {
     <>
       <Navbar />
       <main className="container mx-auto p-6 min-h-screen bg-gray-50">
-        <h1 className="text-4xl font-bold mb-8 text-navy-900 text-center">Admin Paneli - Ürün Yönetimi</h1>
+        <h1 className="text-4xl font-bold mb-8 text-[#222222] text-center">Admin Paneli - Ürün Yönetimi</h1>
 
         <form onSubmit={handleSubmit} className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow mb-12">
-          <h2 className="text-2xl mb-4">{editId ? "Ürünü Güncelle" : "Yeni Ürün Ekle"}</h2>
+          <h2 className="text-2xl mb-4 text-[#222222]">{editId ? "Ürünü Güncelle" : "Yeni Ürün Ekle"}</h2>
 
           <input
             type="text"
@@ -123,7 +123,7 @@ export default function AdminPage() {
             value={form.name}
             onChange={handleChange}
             required
-            className="w-full p-3 border border-gray-300 rounded-md focus:border-secondary focus:ring-2 focus:ring-secondary-light transition mb-4"
+            className="w-full p-3 border border-gray-300 rounded-md focus:border-[#b08900] focus:ring-2 focus:ring-[#b08900] transition mb-4 text-black"
           />
 
           <textarea
@@ -133,7 +133,7 @@ export default function AdminPage() {
             onChange={handleChange}
             required
             rows={3}
-            className="w-full p-3 border border-gray-300 rounded-md focus:border-secondary focus:ring-2 focus:ring-secondary-light transition mb-4"
+            className="w-full p-3 border border-gray-300 rounded-md focus:border-[#b08900] focus:ring-2 focus:ring-[#b08900] transition mb-4 text-black"
           />
 
           <input
@@ -145,7 +145,7 @@ export default function AdminPage() {
             required
             min={0}
             step={0.01}
-            className="w-full p-3 border border-gray-300 rounded-md focus:border-secondary focus:ring-2 focus:ring-secondary-light transition mb-4"
+            className="w-full p-3 border border-gray-300 rounded-md focus:border-[#b08900] focus:ring-2 focus:ring-[#b08900] transition mb-4 text-black"
           />
 
           <input
@@ -155,19 +155,19 @@ export default function AdminPage() {
             value={form.imageUrl}
             onChange={handleChange}
             required
-            className="w-full p-3 border border-gray-300 rounded-md focus:border-secondary focus:ring-2 focus:ring-secondary-light transition mb-6"
+            className="w-full p-3 border border-gray-300 rounded-md focus:border-[#b08900] focus:ring-2 focus:ring-[#b08900] transition mb-6 text-black"
           />
 
           <button
             type="submit"
-            className="bg-secondary hover:bg-secondary-dark text-white py-3 px-6 rounded-md font-semibold transition-colors duration-300"
+            className="bg-[#b08900] hover:bg-[#9c7500] text-white py-3 px-6 rounded-md font-semibold transition-colors duration-300"
           >
             {editId ? "Güncelle" : "Ekle"}
           </button>
         </form>
 
         <section>
-          <h2 className="text-2xl mb-4 text-center">Ürün Listesi</h2>
+          <h2 className="text-2xl mb-4 text-center text-[#222222]">Ürün Listesi</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {products.map((product) => (
               <div
@@ -179,13 +179,13 @@ export default function AdminPage() {
                   alt={product.name}
                   className="w-full h-48 object-cover rounded mb-4"
                 />
-                <h3 className="text-lg font-semibold text-navy-900">{product.name}</h3>
+                <h3 className="text-lg font-semibold text-[#222222]">{product.name}</h3>
                 <p className="text-gray-600 flex-grow">{product.description}</p>
-                <div className="mt-2 font-bold text-secondary">{product.price.toFixed(2)} ₺</div>
+                <div className="mt-2 font-bold text-[#b08900]">{product.price.toFixed(2)} ₺</div>
                 <div className="mt-4 flex gap-2">
                   <button
                     onClick={() => handleEdit(product)}
-                    className="bg-secondary hover:bg-secondary-dark text-white px-3 py-1 rounded-md font-semibold transition-colors duration-300"
+                    className="bg-[#b08900] hover:bg-[#9c7500] text-white px-3 py-1 rounded-md font-semibold transition-colors duration-300"
                   >
                     Düzenle
                   </button>

@@ -1,23 +1,53 @@
+"use client"
+import { useState } from "react"
+
 interface ProductCardProps {
   id: number | string
   name: string
   description: string
   price: number
   imageUrl: string
+  buyUrl: string
 }
 
-export default function ProductCard({ name, description, price, imageUrl }: ProductCardProps) {
+export default function ProductCard({ name, description, price, imageUrl, buyUrl }: ProductCardProps) {
+  const [expanded, setExpanded] = useState(false)
+
   return (
-    <div className="bg-white rounded-lg shadow-card p-5 flex flex-col hover:shadow-lg transition-shadow duration-300">
+    <div
+      onClick={() => setExpanded(!expanded)}
+      className={`bg-white rounded-lg shadow-md p-5 cursor-pointer transform transition-all duration-300 
+        hover:-translate-y-2 hover:shadow-lg`}
+    >
       <img
         src={imageUrl}
         alt={name}
         className="w-full h-56 object-cover rounded-md mb-4"
         loading="lazy"
       />
-      <h3 className="text-xl font-semibold text-navy-900 mb-2">{name}</h3>
-      <p className="text-gray-600 flex-grow mb-4">{description}</p>
-      <div className="text-purple-700 font-bold text-lg">{price.toFixed(2)} ₺</div>
+
+      <h3 className="text-xl font-semibold text-black mb-2">{name}</h3>
+
+      <div
+        className={`transition-all duration-300 overflow-hidden ${
+          expanded ? "max-h-40 opacity-100 mt-2" : "max-h-0 opacity-0"
+        }`}
+      >
+        <p className="text-gray-800 mb-2">{description}</p>
+        <div className="flex items-center gap-4">
+          <div className="text-yellow-600 font-bold text-lg">{price.toFixed(2)} ₺</div>
+
+          <a
+            href={buyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-md text-sm font-semibold transition"
+            onClick={(e) => e.stopPropagation()}
+          >
+            Satın Al
+          </a>
+        </div>
+      </div>
     </div>
   )
 }
