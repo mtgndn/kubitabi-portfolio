@@ -13,7 +13,7 @@ const images = [
 ]
 
 export default function ScrollingGallery() {
-  // Her görsel için görünürlük durumunu tutalım
+  
   const [visibleImages, setVisibleImages] = useState<boolean[]>(new Array(images.length * 2).fill(true))
 
   function handleError(index: number) {
